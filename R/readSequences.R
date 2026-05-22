@@ -3,8 +3,10 @@
 #' @param filepath the filepath to the specific .txt file you are trying to read in
 #'
 #' @return a dataframe with two columns, column one is for the sequence name, column two is for the sequence data itself, each row is for each sequence entered
-#' @example
-#' sequencesDF <- readSequences(exampleSequences.txt)
+#' @export
+#'
+#' @examples
+#' sequencesDF <- readSequences("exampleSequences.txt")
 #'
 readSequences <- function(filepath) {
   # Read the file as a vector of lines, then join into one string preserving newlines as each sequence is on a newline after the name meaning the newline is crucial to preserve
