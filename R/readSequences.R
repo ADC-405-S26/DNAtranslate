@@ -6,9 +6,13 @@
 #' @export
 #'
 #' @examples
-#' sequencesDF <- readSequences("exampleSequences.txt")
-#'
+#' \dontrun{
+#' sequencesDF <- readSequences("path/to/sequences.txt")
+#'}
 readSequences <- function(filepath) {
+
+  checkmate::assert_true(grepl("\\.txt$", filepath))  # only accept .txt files
+
   # Read the file as a vector of lines, then join into one string preserving newlines as each sequence is on a newline after the name meaning the newline is crucial to preserve
   sequenceText <- readLines(filepath)
   sequenceText <- paste(sequenceText, collapse = "\n")
@@ -25,14 +29,14 @@ readSequences <- function(filepath) {
     lines <- lines[lines != ""]          # drop any blank lines, these are bad junk no need get rid of them the user has uploaded some weird file and we don't want it to gunk up our program
 
     # The first line is the sequence name everytime, all remaining lines are sequence data everytime
-    list(name = lines[1], sequence = paste(lines[-1], collapse = ""))  #extract the first line its the name, then collect the rest and "collapse" them into one big old string
-  })
+    list(name = trimws(lines[1]), sequence = gsub(" ", "", paste(lines[-1], collapse = "")))  #extract the first line its the name, then collect the rest and "collapse" them into one big old string
+  }) #okay this thing above is terrible, basically there are random spaces, if I fix the regex to allow spaces in the sequences it works but then we have spaces, to fix this gsub will replace all " " with "" effectively removing all spaces, I have no idea how these were appearing still but this fixes it
 
   # this was an error our checks found, we need to prevent junk sequences from being passed through
   sequences <- Filter(function(entry) {
     !is.null(entry$name) && !is.na(entry$name) &&
       nchar(entry$sequence) > 0 &&
-      grepl("^[ATGCatgc]+$", entry$sequence)  # reject anything that isn't valid nucleotide characters
+      grepl("^[ATGCatgc]+$", entry$sequence)  # reject anything that isn't valid nucleotide characters, but add in spaces
   }, sequences)
 
   # now we have a collection of "sequences"

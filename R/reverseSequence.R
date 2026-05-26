@@ -7,11 +7,15 @@
 #' @export
 #'
 #' @examples
-#' sequences <- reverseSequence(df, "HisD TA1538 Mutant Genotype")
+#' sequences <- reverseSequence(exampleSequences, "HisD TA1538 Mutant Genotype")
 #'
 reverseSequence <- function(df, name) {
+
+  checkmate::assert_data_frame(df)
+  checkmate::assert_string(name)
+  checkmate::assert_true(name %in% df$name)
+
   row_index <- which(df$name == name) # find the row matching the name the user specified
-  if (length(row_index) == 0) stop(paste("no sequence found with name:", name))  # stop if the name wasn't found that user messed up, write some kind of error for this
   df$sequence[row_index] <- paste(rev(strsplit(df$sequence[row_index], "")[[1]]), collapse = "")  # reverse the specified sequence and save back into df
 
   return(df)

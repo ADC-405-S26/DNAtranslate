@@ -18,6 +18,6 @@ the "same" dataframe but with the specified dataframe reversed
 Reverses a specified sequence
 }
 \examples{
-sequences <- reverseSequence(df, "HisD TA1538 Mutant Genotype")
+sequences <- reverseSequence(exampleSequences, "HisD TA1538 Mutant Genotype")
 
 }

@@ -25,5 +25,5 @@ test_that("offset greater than 2 are rejected", {
                    sequence = "ATGGTT",
                    stringsAsFactors = FALSE)
 
-  expect_error(translateDNA(df, offset = 3), regexp = "offset must be 0, 1, or 2")
+  expect_error(translateDNA(df, offset = 3), regexp = "Must be element of set ")
 })

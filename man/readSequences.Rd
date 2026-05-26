@@ -16,6 +16,7 @@ a dataframe with two columns, column one is for the sequence name, column two is
 Read in sequence data
 }
 \examples{
-sequencesDF <- readSequences("exampleSequences.txt")
-
+\dontrun{
+sequencesDF <- readSequences("path/to/sequences.txt")
+}
 }

@@ -1,3 +1,6 @@
 ^Rpackage\.Rproj$
 ^\.Rproj\.user$
 ^LICENSE\.md$
+^doc$
+^Meta$
+^data-raw$

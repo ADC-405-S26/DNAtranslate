@@ -1,0 +1,37 @@
+---
+title: "Introduction to DNAtranslate"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Introduction to DNAtranslate}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+the DNAtranslate provides utility for common tasks in analyzing DNA within R. To install this package from GitHub, use
+
+```{r setup, eval=FALSE}
+# install.packages("remotes")
+# install.packages("devtools")
+devtools::install_github("ADC-405-S26/DNAtranslate")
+
+```
+
+To load the package use the following code
+
+```{r load package, eval=FALSE}
+
+library(DNAtranslate)
+
+```
+
+The package provides three functions
+* 'readSequence'
+* 'translateDNA'
+* 'reverseSequence'

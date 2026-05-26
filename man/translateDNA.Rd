@@ -18,6 +18,6 @@ a dataframe with 3 columns, name, DNA sequence, protein sequence
 Translate a DNA sequence to a protein sequence
 }
 \examples{
-protein_df <- translateDNA(DNA_df)
+protein_df <- translateDNA(exampleSequences)
 
 }

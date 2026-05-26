@@ -8,9 +8,16 @@
 #' @export
 #'
 #' @examples
-#' protein_df <- translateDNA(DNA_df)
+#' protein_df <- translateDNA(exampleSequences)
 #'
 translateDNA <- function(df, offset = 0) {
+
+  # make sure users only enter 0, 1, or 2
+  checkmate::assert_choice(offset, choices = c(0, 1, 2))
+  checkmate::assert_data_frame(df)
+  checkmate::assert_data_frame(df, ncols = 2)
+  checkmate::assert_names(names(df), must.include = c("name", "sequence"))
+
   codon_table <- c(
     TTT="F",
     TTC="F",
@@ -77,10 +84,6 @@ translateDNA <- function(df, offset = 0) {
     GGA="G",
     GGG="G"
   )
-  # make sure users only enter 0, 1, or 2
-  translateDNA <- function(df, offset = 0) {
-    if (!offset %in% c(0, 1, 2)) stop("offset must be 0, 1, or 2")
-
   # Apply translation to each row's sequence
   df$protein <- sapply(df$sequence, function(seq) {
     seq <- substring(seq, offset + 1) # trim the start of the sequence by the offset, not every DNA sequence starts in frame
@@ -89,5 +92,4 @@ translateDNA <- function(df, offset = 0) {
     paste(codon_table[codons], collapse = "") # look up each codon and join into protein string
   })
   return(df)
-  }
 }

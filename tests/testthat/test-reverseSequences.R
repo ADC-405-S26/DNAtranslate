@@ -5,7 +5,7 @@ test_that("reverseSequence reverses the specified row as expected", {
   df <- data.frame(name = c("seq1", "seq2"),
                    sequence = c("ATCG", "GGCC"),
                    stringsAsFactors = FALSE)
-  dddd
+
   result <- reverseSequence(df, "seq1")
 
   expect_equal(result$sequence[1], "GCTA")
@@ -27,7 +27,7 @@ test_that("reverseSequence errors with an informative message when name is missi
                    stringsAsFactors = FALSE)
 
   expect_error(reverseSequence(df, "doesNotExist"),
-               regexp = "no sequence found with name: not a name of a sequence")
+               regexp = "Assertion on 'name %in% df\\$name' failed")
 })
 
 
