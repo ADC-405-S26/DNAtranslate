@@ -77,6 +77,10 @@ translateDNA <- function(df, offset = 0) {
     GGA="G",
     GGG="G"
   )
+  # make sure users only enter 0, 1, or 2
+  translateDNA <- function(df, offset = 0) {
+    if (!offset %in% c(0, 1, 2)) stop("offset must be 0, 1, or 2")
+
   # Apply translation to each row's sequence
   df$protein <- sapply(df$sequence, function(seq) {
     seq <- substring(seq, offset + 1) # trim the start of the sequence by the offset, not every DNA sequence starts in frame
@@ -85,4 +89,5 @@ translateDNA <- function(df, offset = 0) {
     paste(codon_table[codons], collapse = "") # look up each codon and join into protein string
   })
   return(df)
+  }
 }

@@ -27,10 +27,19 @@ readSequences <- function(filepath) {
     # The first line is the sequence name everytime, all remaining lines are sequence data everytime
     list(name = lines[1], sequence = paste(lines[-1], collapse = ""))  #extract the first line its the name, then collect the rest and "collapse" them into one big old string
   })
+
+  # this was an error our checks found, we need to prevent junk sequences from being passed through
+  sequences <- Filter(function(entry) {
+    !is.null(entry$name) && !is.na(entry$name) &&
+      nchar(entry$sequence) > 0 &&
+      grepl("^[ATGCatgc]+$", entry$sequence)  # reject anything that isn't valid nucleotide characters
+  }, sequences)
+
   # now we have a collection of "sequences"
   # Collect results into a two-column data frame using sapply to go through each entry into sequences
-  data.frame(name = sapply(sequences, `[[`, "name"), # grab all the names for each entry in sequences
-             sequence = sapply(sequences, `[[`, "sequence"), # grab all the sequences within the sequenences list
+  data.frame(name = vapply(sequences, `[[`, character(1), "name"),
+             sequence = vapply(sequences, `[[`, character(1), "sequence"),
              row.names = NULL,
              stringsAsFactors = FALSE)
+
 } # function over boom done

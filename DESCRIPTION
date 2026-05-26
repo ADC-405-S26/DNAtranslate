@@ -1,10 +1,15 @@
 Package: Rpackage
-Title: What the Package Does (One Line, Title Case)
+Title: DNAtranslate
 Version: 0.0.0.9000
 Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"))
-Description: What the package does (one paragraph).
+    person("Aiden", "Hewitt", , "aiden@aidenhewitt.com", role = c("aut", "cre"))
+Description: Simple package for importing .txt files with DNA sequences in bulk, translating them to protein sequences and reversing individual entries if required.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 8.0.0
+Imports: 
+    checkmate
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
