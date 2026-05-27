@@ -13,7 +13,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# Rpackage
+# DNAtranslate
 
 <!-- badges: start -->
 <!-- badges: end -->
@@ -33,6 +33,7 @@ pak::pak("ADC-405-S26/DNAtranslate")
 
 This is a basic example which shows you how import a DNA sequence, reverse it, and then translate it into proteins.
 
+# Import DNA sequences
 ```{r readSequences}
 library(DNAtranslate)
 # import a .txt file formatted as followed 
@@ -43,7 +44,7 @@ sequencesDF <- readSequences("data-raw/exampleSequences.txt")
 head(sequencesDF)
 
 ```
-
+# Reverse specific sequence
 ```{r reverseSequence}
 library(DNAtranslate)
 # take that previously created DF and flip a specified sequence
@@ -51,7 +52,7 @@ reverse <- reverseSequence(exampleSequences, "HisD TA1538 Mutant Genotype")
 head(reverse)
 # now the sequence with the name "HisD TA1538 Mutant Genotype" is flipped
 ```
-
+# Generate protein sequence from DNA
 ```{r translate DNA}
 library(DNAtranslate)
 # add a new column to the sequence DF with the protein sequence that corresponds with the DNA sequence
