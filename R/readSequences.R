@@ -13,7 +13,7 @@
 #' Sequences can only include the following characters "AaTtGgCc " otherwise it will be rejected
 #' Spaces are automatically removed from the sequence as the functoin assumes they are white space
 #'
-#' @param filepath the filepath to the specific .txt file you are trying to read in.
+#' @param filepath a string containing a filepath to the specific .txt file you are trying to read in.
 #'
 #' @return a dataframe with two columns, column one is for the sequence name, column two is for the sequence data itself, each row is for each sequence entered
 #' @export
