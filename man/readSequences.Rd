@@ -16,7 +16,6 @@ a dataframe with two columns, column one is for the sequence name, column two is
 Read in sequence data
 }
 \examples{
-\dontrun{
-sequencesDF <- readSequences("path/to/sequences.txt")
-}
+path <- system.file("extdata", "exampleSequences.txt", package = "DNAtranslate")
+sequencesDF <- readSequences(path)
 }

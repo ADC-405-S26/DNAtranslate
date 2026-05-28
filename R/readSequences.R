@@ -6,9 +6,8 @@
 #' @export
 #'
 #' @examples
-#' \dontrun{
-#' sequencesDF <- readSequences("path/to/sequences.txt")
-#'}
+#' path <- system.file("extdata", "exampleSequences.txt", package = "DNAtranslate")
+#' sequencesDF <- readSequences(path)
 readSequences <- function(filepath) {
 
   checkmate::assert_true(grepl("\\.txt$", filepath))  # only accept .txt files
