@@ -25,11 +25,11 @@ readSequences <- function(filepath) {
   sequences <- lapply(sequenceText, function(entry) {
 
     lines <- strsplit(entry, "\n")[[1]]  # split chunk into individual lines, most of these will be our sequence, the first one will be our name
-    lines <- lines[lines != ""]          # drop any blank lines, these are bad junk no need get rid of them the user has uploaded some weird file and we don't want it to gunk up our program
+    lines <- lines[lines != ""]          # drop any blank lines, get rid of them the user has uploaded some weird file
 
-    # The first line is the sequence name everytime, all remaining lines are sequence data everytime
+    # The first line is the sequence name everytime, all remaining lines are sequence data every time
     list(name = trimws(lines[1]), sequence = gsub(" ", "", paste(lines[-1], collapse = "")))  #extract the first line its the name, then collect the rest and "collapse" them into one big old string
-  }) #okay this thing above is terrible, basically there are random spaces, if I fix the regex to allow spaces in the sequences it works but then we have spaces, to fix this gsub will replace all " " with "" effectively removing all spaces, I have no idea how these were appearing still but this fixes it
+  }) #regex now allows for " " inside the sequence, but " " is not actually a DNA sequence so gsub will replace all " " with ""
 
   # this was an error our checks found, we need to prevent junk sequences from being passed through
   sequences <- Filter(function(entry) {
@@ -45,4 +45,4 @@ readSequences <- function(filepath) {
              row.names = NULL,
              stringsAsFactors = FALSE)
 
-} # function over boom done
+}
