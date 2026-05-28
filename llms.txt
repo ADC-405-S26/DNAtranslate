@@ -11,8 +11,8 @@ You can install the development version of Rpackage from
 
 ``` r
 
-# install.packages("pak")
-pak::pak("ADC-405-S26/DNAtranslate")
+# install.packages("devtools")
+devtools::install_github("ADC-405-S26/DNAtranslate")
 ```
 
 ## Example
