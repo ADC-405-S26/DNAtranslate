@@ -23,7 +23,6 @@ sequence entered
 ## Examples
 
 ``` r
-if (FALSE) { # \dontrun{
-sequencesDF <- readSequences("path/to/sequences.txt")
-} # }
+path <- system.file("extdata", "exampleSequences.txt", package = "DNAtranslate")
+sequencesDF <- readSequences(path)
 ```

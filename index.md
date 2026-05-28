@@ -29,7 +29,8 @@ library(DNAtranslate)
 # >Sequence Name
 # ATGCATGCATGCATGCATGCATGC
 # ATGCATGCATGC...
-sequencesDF <- readSequences("data-raw/exampleSequences.txt")
+path <- system.file("extdata", "exampleSequences.txt", package = "DNAtranslate")
+sequencesDF <- readSequences(path)
 head(sequencesDF)
 #>                            name
 #> 1   HisD TA1538 Mutant Genotype
