@@ -1,6 +1,19 @@
-#' Read in sequence data
+#' Read in sequence data from a .txt file
+#' The functin detects the name as being whatever is on its own line and directly after a ">"
+#' An example of a properly formatted name and sequence can be found below
 #'
-#' @param filepath the filepath to the specific .txt file you are trying to read in
+#' >Sequence Name One
+#' ATGCATGCATGCATGCATGC
+#' ATGCATGCATGCATGCATGC
+#' >Sequence Name Two
+#' CGTACGTACGTACGTACGTA
+#' CGTACGTACGTACGTACGTA
+#'
+#' The example code Below will pull the packages in-buildt example text file.
+#' Sequences can only include the following characters "AaTtGgCc " otherwise it will be rejected
+#' Spaces are automatically removed from the sequence as the functoin assumes they are white space
+#'
+#' @param filepath the filepath to the specific .txt file you are trying to read in.
 #'
 #' @return a dataframe with two columns, column one is for the sequence name, column two is for the sequence data itself, each row is for each sequence entered
 #' @export
