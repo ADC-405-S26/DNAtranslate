@@ -18,7 +18,7 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 <!-- badges: end -->
 
-This R package was created to experiment with the R creation process and simplify the import of DNA sequenes, translation of DNA sequences and reversal of DNA sequences.
+This R package was created to experiment with the R package creation process and simplify the import of DNA sequenes, translation of DNA sequences and reversal of DNA sequences. I would not recommend it for real world problems when much more capable packages exist. read_fastQ is a much more capable way to import sequences while preserving much more information.
 
 ## Installation
 
@@ -40,7 +40,8 @@ library(DNAtranslate)
 # >Sequence Name
 # ATGCATGCATGCATGCATGCATGC
 # ATGCATGCATGC...
-path <- system.file("extdata", "exampleSequences.txt", package = "DNAtranslate")
+# it is important that the Sequence Name is followed by a new line and proceeded by a >
+path <- system.file("extdata", "exampleSequences.txt", package = "DNAtranslate") # this is how to fetch the packages inbuildt dataset for test purposes
 sequencesDF <- readSequences(path)
 head(sequencesDF)
 
