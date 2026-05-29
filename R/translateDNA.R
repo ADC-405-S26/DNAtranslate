@@ -18,6 +18,7 @@ translateDNA <- function(df, offset = 0) {
   checkmate::assert_data_frame(df, ncols = 2)
   checkmate::assert_names(names(df), must.include = c("name", "sequence"))
 
+  # this table is the same "table" that nearly every single life form uses when ribosomes transcribe DNA into an amino acid sequence
   codon_table <- c(
     TTT="F",
     TTC="F",
@@ -89,7 +90,7 @@ translateDNA <- function(df, offset = 0) {
     seq <- substring(seq, offset + 1) # trim the start of the sequence by the offset, not every DNA sequence starts in frame
     codons <- strsplit(seq, "(?<=.{3})", perl = TRUE)[[1]] # split into 3-character codons, these depend on the offset the user just specified
     codons <- codons[nchar(codons) == 3] # drop incomplete codons at the end
-    paste(codon_table[codons], collapse = "") # look up each codon and join into protein string
-  })
+    paste(codon_table[codons], collapse = "") # look up each codon in the codon table and join into protein string
+  }) # it is strange writing code to do what evolution took ages to do
   return(df)
 }
