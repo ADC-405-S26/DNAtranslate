@@ -55,7 +55,7 @@
 </h1></div>
 <!-- badges: start -->
 <!-- badges: end -->
-<p>This R package was created to experiment with the R creation process and simplify the import of DNA sequenes, translation of DNA sequences and reversal of DNA sequences.</p>
+<p>This R package was created to experiment with the R package creation process and simplify the import of DNA sequenes, translation of DNA sequences and reversal of DNA sequences. I would not recommend it for real world problems when much more capable packages exist. read_fastQ is a much more capable way to import sequences while preserving much more information.</p>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
@@ -74,12 +74,13 @@
 <h1 id="import-dna-sequences">Import DNA sequences<a class="anchor" aria-label="anchor" href="#import-dna-sequences"></a>
 </h1>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://adc-405-s26.github.io/DNAtranslate/">DNAtranslate</a></span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://adc-405-s26.github.io/DNAtranslate/" class="external-link">DNAtranslate</a></span><span class="op">)</span></span>
 <span><span class="co"># import a .txt file formatted as followed </span></span>
 <span><span class="co"># &gt;Sequence Name</span></span>
 <span><span class="co"># ATGCATGCATGCATGCATGCATGC</span></span>
 <span><span class="co"># ATGCATGCATGC...</span></span>
-<span><span class="va">path</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>, <span class="st">"exampleSequences.txt"</span>, package <span class="op">=</span> <span class="st">"DNAtranslate"</span><span class="op">)</span></span>
+<span><span class="co"># it is important that the Sequence Name is followed by a new line and proceeded by a &gt;</span></span>
+<span><span class="va">path</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>, <span class="st">"exampleSequences.txt"</span>, package <span class="op">=</span> <span class="st">"DNAtranslate"</span><span class="op">)</span> <span class="co"># this is how to fetch the packages inbuildt dataset for test purposes</span></span>
 <span><span class="va">sequencesDF</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/readSequences.html">readSequences</a></span><span class="op">(</span><span class="va">path</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">sequencesDF</span><span class="op">)</span></span>
 <span><span class="co">#&gt;                            name</span></span>
@@ -93,7 +94,7 @@
 <h1 id="reverse-specific-sequence">Reverse specific sequence<a class="anchor" aria-label="anchor" href="#reverse-specific-sequence"></a>
 </h1>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://adc-405-s26.github.io/DNAtranslate/">DNAtranslate</a></span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://adc-405-s26.github.io/DNAtranslate/" class="external-link">DNAtranslate</a></span><span class="op">)</span></span>
 <span><span class="co"># take that previously created DF and flip a specified sequence</span></span>
 <span><span class="va">reverse</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/reverseSequence.html">reverseSequence</a></span><span class="op">(</span><span class="va">exampleSequences</span>, <span class="st">"HisD TA1538 Mutant Genotype"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">reverse</span><span class="op">)</span></span>
@@ -109,7 +110,7 @@
 <h1 id="generate-protein-sequence-from-dna">Generate protein sequence from DNA<a class="anchor" aria-label="anchor" href="#generate-protein-sequence-from-dna"></a>
 </h1>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://adc-405-s26.github.io/DNAtranslate/">DNAtranslate</a></span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://adc-405-s26.github.io/DNAtranslate/" class="external-link">DNAtranslate</a></span><span class="op">)</span></span>
 <span><span class="co"># add a new column to the sequence DF with the protein sequence that corresponds with the DNA sequence</span></span>
 <span><span class="va">proteinSequence</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/translateDNA.html">translateDNA</a></span><span class="op">(</span><span class="va">exampleSequences</span>, offset <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">proteinSequence</span><span class="op">)</span></span>

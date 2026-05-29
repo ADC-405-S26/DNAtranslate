@@ -1,8 +1,11 @@
 # DNAtranslate
 
-This R package was created to experiment with the R creation process and
-simplify the import of DNA sequenes, translation of DNA sequences and
-reversal of DNA sequences.
+This R package was created to experiment with the R package creation
+process and simplify the import of DNA sequenes, translation of DNA
+sequences and reversal of DNA sequences. I would not recommend it for
+real world problems when much more capable packages exist. read_fastQ is
+a much more capable way to import sequences while preserving much more
+information.
 
 ## Installation
 
@@ -29,7 +32,8 @@ library(DNAtranslate)
 # >Sequence Name
 # ATGCATGCATGCATGCATGCATGC
 # ATGCATGCATGC...
-path <- system.file("extdata", "exampleSequences.txt", package = "DNAtranslate")
+# it is important that the Sequence Name is followed by a new line and proceeded by a >
+path <- system.file("extdata", "exampleSequences.txt", package = "DNAtranslate") # this is how to fetch the packages inbuildt dataset for test purposes
 sequencesDF <- readSequences(path)
 head(sequencesDF)
 #>                            name
@@ -80,18 +84,15 @@ head(proteinSequence)
 
 ## All functions
 
-- [`exampleSequences`](https://adc-405-s26.github.io/DNAtranslate/reference/exampleSequences.md)
-  : Example HisD DNA Sequences
-- [`readSequences()`](https://adc-405-s26.github.io/DNAtranslate/reference/readSequences.md)
-  : Read in sequence data
-- [`reverseSequence()`](https://adc-405-s26.github.io/DNAtranslate/reference/reverseSequence.md)
-  : Reverses a specified sequence
-- [`translateDNA()`](https://adc-405-s26.github.io/DNAtranslate/reference/translateDNA.md)
-  : Translate a DNA sequence to a protein sequence
+- [`exampleSequences`](exampleSequences.md) : Example HisD DNA Sequences
+- [`readSequences()`](readSequences.md) : Read in sequence data
+- [`reverseSequence()`](reverseSequence.md) : Reverses a specified
+  sequence
+- [`translateDNA()`](translateDNA.md) : Translate a DNA sequence to a
+  protein sequence
 
 # Articles
 
 ### All vignettes
 
-- [Introduction to
-  DNAtranslate](https://adc-405-s26.github.io/DNAtranslate/articles/intro-to-DNAtranslate.md):
+- [Introduction to DNAtranslate](intro-to-DNAtranslate.md):
