@@ -16,7 +16,7 @@ reverseSequence <- function(df, name) {
   checkmate::assert_true(name %in% df$name)
 
   row_index <- which(df$name == name) # find the row matching the name the user specified
-  df$sequence[row_index] <- paste(rev(strsplit(df$sequence[row_index], "")[[1]]), collapse = "")  # reverse the specified sequence and save back into df
+  df$sequence[row_index] <- paste(rev(strsplit(df$sequence[row_index], "")[[1]]), collapse = "")  # reverse the specified sequence and save back into df by cutting it into list of characters and then pasting them in reverse order
 
   return(df)
 }
